@@ -1,0 +1,345 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: #1a1a2e;
+}
+
+#app {
+  background: #1a1a2e;
+  min-height: 100vh;
+  color: #eee;
+}
+
+/* TOPBAR */
+
+.topbar {
+  background: #16213e;
+  border-bottom: 2px solid #f5a623;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 52px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #f5a623;
+  letter-spacing: 2px;
+  margin-right: 32px;
+}
+
+.logo span {
+  color: #fff;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0 18px;
+  height: 52px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all .2s;
+}
+
+.nav-btn:hover {
+  color: #f5a623;
+}
+
+.nav-btn.active {
+  color: #f5a623;
+  border-bottom-color: #f5a623;
+}
+
+.badge {
+  background: #e24b4a;
+  color: #fff;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 1px 5px;
+  margin-left: 4px;
+}
+
+.content {
+  padding: 24px;
+}
+
+/* CADASTRO */
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5a623;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f5a623;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group select {
+  background: #16213e;
+  border: 1px solid #334;
+  color: #eee;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #f5a623;
+}
+
+.form-group select option {
+  background: #16213e;
+}
+
+.btn-primary {
+  background: #f5a623;
+  color: #1a1a2e;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.btn-primary:hover {
+  background: #ffc147;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(.97);
+}
+
+.btn-danger {
+  background: #e24b4a;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: none;
+  color: #f5a623;
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid #f5a623;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.lotes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.lotes-table th {
+  background: #f5a623;
+  color: #1a1a2e;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.lotes-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #223;
+  font-size: 13px;
+}
+
+.lotes-table tr:hover td {
+  background: #1e2d4a;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.s-aguardando {
+  background: #334;
+  color: #aaa;
+}
+
+.s-em-leilao {
+  background: #f5a62333;
+  color: #f5a623;
+  border: 1px solid #f5a62388;
+}
+
+.s-vendido {
+  background: #1a3d1a;
+  color: #6fcf6f;
+  border: 1px solid #3a7a3a;
+}
+
+/* LEILOEIRO */
+
+.leilao-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+}
+
+.telao-preview {
+  background: #000;
+  border: 3px solid #f5a623;
+  border-radius: 10px;
+  padding: 24px;
+  min-height: 320px;
+}
+
+.controles {
+  background: #16213e;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #334;
+}
+
+/* RELATÓRIO */
+
+.rel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.rel-card {
+  background: #16213e;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #334;
+  text-align: center;
+}
+
+.rel-card-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.rel-card-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f5a623;
+}
+
+/* MODAL */
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #16213e;
+  border: 2px solid #f5a623;
+  border-radius: 12px;
+  padding: 28px;
+  width: 420px;
+}
+
+/* TELÃO */
+
+#telao-full {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  z-index: 999;
+  padding: 40px;
+}
+
+#telao-full.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-fechar-telao {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  background: #333;
+  color: #aaa;
+  border: none;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 1000;
+}   

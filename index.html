@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Leilão Pecuário</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+
+  <div class="topbar">
+    <div class="logo">🐄 LEILÃO<span>PECUÁRIO</span></div>
+
+    <button class="nav-btn active"
+      onclick="showTab('cadastro')"
+      id="tab-cadastro">
+
+      Cadastro de Lotes
+    </button>
+
+    <button class="nav-btn"
+      onclick="showTab('leilao')"
+      id="tab-leilao">
+
+      Painel do Leiloeiro
+      <span class="badge" id="badge-leilao">0</span>
+    </button>
+
+    <button class="nav-btn"
+      onclick="showTab('relatorio')"
+      id="tab-relatorio">
+
+      Relatório / Emissão
+    </button>
+  </div>
+
+  <!-- CADASTRO -->
+  <div class="content" id="content-cadastro">
+
+    <div class="section-title">
+      📋 Cadastro de Lotes
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Nº do Lote</label>
+        <input type="number" id="f-lote" placeholder="Ex: 81" min="1">
+      </div>
+
+      <div class="form-group">
+        <label>Descrição dos Animais</label>
+        <input type="text" id="f-desc" placeholder="Ex: 2 GARROTES">
+      </div>
+
+      <div class="form-group">
+        <label>Qtd. de Animais</label>
+        <input type="number" id="f-qtd" placeholder="Ex: 2" min="1">
+      </div>
+
+      <div class="form-group">
+        <label>Peso Total (kg)</label>
+        <input type="number" id="f-peso" placeholder="Ex: 315" min="1">
+      </div>
+
+      <div class="form-group">
+        <label>Lance Inicial (R$)</label>
+        <input type="number" id="f-lance" placeholder="Ex: 3350" min="0">
+      </div>
+
+      <div class="form-group">
+        <label>Condição de Pagamento</label>
+
+        <select id="f-prazo">
+          <option value="A VISTA">A Vista</option>
+          <option value="A PRAZO">A Prazo</option>
+          <option value="30 DIAS">30 Dias</option>
+          <option value="60 DIAS">60 Dias</option>
+          <option value="90 DIAS">90 Dias</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div style="display:flex; gap:12px; align-items:center; margin-bottom:24px;">
+
+      <button class="btn-primary" onclick="cadastrarLote()">
+        + Cadastrar Lote
+      </button>
+
+      <span id="msg-cadastro"
+        style="font-size:13px; color:#6fcf6f;">
+      </span>
+
+    </div>
+
+    <table class="lotes-table">
+
+      <thead>
+        <tr>
+          <th>Lote</th>
+          <th>Descrição</th>
+          <th>Qtd</th>
+          <th>Peso (kg)</th>
+          <th>Lance Inicial</th>
+          <th>R$/kg</th>
+          <th>Pagamento</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody-lotes"></tbody>
+
+    </table>
+
+  </div>
+
+  <!-- LEILÃO -->
+  <div class="content"
+    id="content-leilao"
+    style="display:none; position:relative;">
+
+    <div class="section-title">
+      🔨 Painel do Leiloeiro
+    </div>
+
+    <div class="leilao-grid">
+
+      <div>
+
+        <div style="display:flex; gap:10px; margin-bottom:16px; align-items:center;">
+
+          <button class="btn-primary"
+            onclick="abrirTelao()"
+            style="font-size:12px; padding:8px 16px;">
+
+            📺 Abrir Telão Fullscreen
+          </button>
+
+          <span style="font-size:12px; color:#888;">
+            Exibe o telão na tela inteira para projeção
+          </span>
+
+        </div>
+
+        <div class="telao-preview" id="telao-preview">
+
+          <div style="text-align:center; color:#444; padding-top:60px; font-size:16px;">
+            Nenhum lote selecionado
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="controles">
+
+        <div class="lote-selector">
+
+          <label>Selecionar Lote para Leilão</label>
+
+          <select id="sel-lote" onchange="selecionarLote()">
+            <option value="">— Escolha um lote —</option>
+          </select>
+
+        </div>
+
+        <div class="lance-atual">
+
+          <div class="lance-atual-label">
+            Lance Atual
+          </div>
+
+          <div class="lance-atual-val" id="lance-display">
+            R$ 0,00
+          </div>
+
+          <div class="lance-atual-kg" id="kg-display">
+            — R$/kg
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TELÃO FULLSCREEN -->
+<div id="telao-full">
+
+  <button class="btn-fechar-telao"
+    onclick="fecharTelao()">
+
+    ✖ Fechar Telão
+  </button>
+
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+
+    <div id="telao-fs-content"
+      style="max-width:900px; margin:0 auto; width:100%;">
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Dockerfile.dev — hot-reload, sem multi-stage
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc libpq-dev libxml2-dev libxslt-dev build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements/base.txt requirements/development.txt ./requirements/
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements/development.txt
+
+# Código montado como volume — não copia aqui
+COPY entrypoint.dev.sh /entrypoint.dev.sh
+RUN chmod +x /entrypoint.dev.sh
+ENTRYPOINT ["/entrypoint.dev.sh"]
